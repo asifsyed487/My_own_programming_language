@@ -1,0 +1,27 @@
+start
+
+starth
+
+    count is 1
+    a is 1
+
+endh
+
+startb
+
+    loop(count is less than 5)
+        {
+            when(a is equal to count)
+                {
+                    print a
+                }
+            otherwise
+               {
+                   print count
+               }
+            count++
+        }
+
+endb
+
+finish

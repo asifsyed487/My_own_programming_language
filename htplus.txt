@@ -1,0 +1,28 @@
+grammar htplus;
+
+start : 'start' code+ 'finish';
+
+code : head_code | body_code ;
+
+head_code : 'starth' statement+ 'endh';
+
+statement : VAR 'is' Num;
+
+body_code : 'startb' statements+ 'endb';
+
+statements : loop | condition | print | VAR('++' | '--');
+
+loop : 'loop' '(' (VAR | Num) 'is less than' (VAR |Num) ')' '{' statements* '}' | 'loop' '(' (VAR | Num) 'is greater than' (VAR |Num) ')' '{' statements* '}';
+
+condition : 'when' '(' (VAR | Num) 'is less than' (VAR | Num) ')''{' statements? '}' | 'when' '(' (VAR | Num) 'is greater than' (VAR | Num) ')''{' statements? '}' | 'when' '(' (VAR | Num) 'is equal to' (VAR | Num) ')''{' statements? '}' | 'otherwise' '{' statements? '}';
+
+print : 'print' (VAR | Num) ;
+
+
+VAR : [a-z]+ ;
+
+Num : [0-9]+ ;
+
+
+WS : [ \r\n\t]+ -> skip ;
+             
